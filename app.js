@@ -10,10 +10,8 @@ app.use(logger('tiny'))
 
 
 
-// Test route
-app.get('/', (req, res) => {
-    res.json({message:'/ route'})
-})
+// Middlewares for routes
+app.use('/', require('./routes/indexRoutes.js'))
 
 
 
