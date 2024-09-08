@@ -14,6 +14,15 @@ app.use(logger('tiny'))
 app.use('/', require('./routes/indexRoutes.js'))
 
 
+// Error handling
+const ErrorHandler = require('./utils/errorHandler.js')
+const { generatedErrors } = require('./middlewares/errors.js')
+app.all('*',(req,res,next)=>{
+    next(new ErrorHandler(`Requested URL Not Found ${req.url}`))
+})
+app.use(generatedErrors)
+
+
 
 // Specifies and starts the server on the defined port 
 app.listen(process.env.PORT,()=>{
