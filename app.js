@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()  // Creates an instance of express
 
 
+// Connecting to db
+require('./models/database.js').connectDB();
+
 
 // Setting up logger
 const logger = require('morgan')
